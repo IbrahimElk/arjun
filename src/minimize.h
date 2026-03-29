@@ -45,6 +45,8 @@ struct Minimize
     ~Minimize() = default;
 
     void run_minimize_indep(ArjunNS::SimplifiedCNF& cnf, bool all_indep);
+    void run_minimize_indep_info(ArjunNS::SimplifiedCNF& cnf,
+        bool all_indep, ArjunNS::Arjun::IndepInfo& info);
 
     const Config conf;
     std::unique_ptr<CMSat::SATSolver> solver;

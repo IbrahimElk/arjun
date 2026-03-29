@@ -1404,9 +1404,16 @@ public:
         uint32_t max_repairs = std::numeric_limits<uint32_t>::max();
     };
 
+    struct IndepInfo {
+        std::vector<std::pair<CMSat::Lit, CMSat::Lit>> eq_lits;
+        std::vector<CMSat::Lit> backbone;
+        std::vector<uint32_t> free_vars;
+    };
+
     /// Standalone functions
     void standalone_minimize_indep(SimplifiedCNF& cnf, bool all_indep);
     void standalone_backward_round_synth(SimplifiedCNF& cnf, const Arjun::ManthanConf& manthan_conf);
+    void standalone_minimize_indep_info(SimplifiedCNF& cnf, bool all_indep, IndepInfo& info);
     void standalone_extend_sampl_set(SimplifiedCNF& cnf);
     bool standalone_check_extend(const SimplifiedCNF& cnf);
     void standalone_unsat_define(SimplifiedCNF& cnf);
